@@ -46,11 +46,10 @@ export default class Tree {
     }
   }
   
-  // find(value, node = this.root) {
-  //   console.log(node);
-  //   if (node === null || node.value === value) {
-  //     return node;
-  //   }
-  //   return this.find(node.left) || this.find(node.right);
-  // }
+  find(value, node = this.root) {
+    if (node === null || node.value === value) {
+      return node;
+    }
+    return this.find(value, node.left) || this.find(value, node.right);
+  }
 }
