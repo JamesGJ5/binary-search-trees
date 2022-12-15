@@ -4,7 +4,12 @@ class Tree {
   }
 
   #buildTree(arr) {
+    this.#prepareArray(arr);
+  }
+
+  #prepareArray(arr) {
     this.#removeDuplicates(arr);
+    arr.sort();
   }
 
   #removeDuplicates(arr) {
