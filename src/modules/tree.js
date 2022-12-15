@@ -40,10 +40,17 @@ export default class Tree {
     if (node.right !== null) {
       this.prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
     }
-    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.data}`);
+    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.value}`);
     if (node.left !== null) {
       this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
   }
   
+  // find(value, node = this.root) {
+  //   console.log(node);
+  //   if (node === null || node.value === value) {
+  //     return node;
+  //   }
+  //   return this.find(node.left) || this.find(node.right);
+  // }
 }
