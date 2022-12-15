@@ -7,10 +7,15 @@ export default class Tree {
   }
 
   #buildTree(arr, start, end) {
-    // if (start > end) {
-    //     return null;
-    // }
-    // const root = 
+    // arr must be sorted
+    if (start > end) {
+        return null;
+    }
+    const mid = parseInt((start + end) / 2);
+    const root = new Node(arr[mid]);
+    root.left = this.#buildTree(arr, start, mid - 1);
+    root.right = this.#buildTree(arr, mid + 1, end);
+    return root;
   }
 
   #prepareArray(arr) {
