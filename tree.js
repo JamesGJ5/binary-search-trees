@@ -1,15 +1,15 @@
 class Tree {
   constructor(arr) {
+    this.#prepareArray(arr);
     this.root = this.#buildTree(arr);
   }
 
   #buildTree(arr) {
-    this.#prepareArray(arr);
   }
 
   #prepareArray(arr) {
     this.#removeDuplicates(arr);
-    arr.sort();
+    arr.sort((a, b) => a - b);
   }
 
   #removeDuplicates(arr) {
@@ -24,4 +24,4 @@ class Tree {
   }
 }
 
-const tree1 = new Tree([1, 5, 3, 2, 6, 5, 8, 7, 6, 7, 0]);
+const tree1 = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
