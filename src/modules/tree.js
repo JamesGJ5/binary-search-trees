@@ -24,6 +24,7 @@ export default class Tree {
   }
 
   #removeDuplicates(arr) {
+    // TODO: consider splitting the below into two methods
     const dataUnrepeated = new Set();
     while (arr.length > 0) {
       dataUnrepeated.add(arr.pop());
