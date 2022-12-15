@@ -20,6 +20,7 @@ export default class Tree {
 
   #prepareArray(arr) {
     this.#removeDuplicates(arr);
+    // arr must contain values that permit the below
     arr.sort((a, b) => a - b);
   }
 
@@ -44,4 +45,5 @@ export default class Tree {
       this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
   }
+  
 }
