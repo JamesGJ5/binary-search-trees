@@ -1,10 +1,16 @@
-class Tree {
+import Node from './node_class';
+
+export default class Tree {
   constructor(arr) {
     this.#prepareArray(arr);
-    this.root = this.#buildTree(arr);
+    this.root = this.#buildTree(arr, 0, arr.length - 1);
   }
 
-  #buildTree(arr) {
+  #buildTree(arr, start, end) {
+    // if (start > end) {
+    //     return null;
+    // }
+    // const root = 
   }
 
   #prepareArray(arr) {
@@ -23,5 +29,3 @@ class Tree {
     });
   }
 }
-
-const tree1 = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
