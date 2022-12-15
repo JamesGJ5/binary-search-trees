@@ -1,1 +1,1 @@
-(()=>{"use strict";new class{constructor(e){this.#e(e),this.root=this.#r(e,0,e.length-1)}#r(e,r,t){}#e(e){this.#t(e),e.sort(((e,r)=>e-r)),console.log(e)}#t(e){const r=new Set;for(;e.length>0;)r.add(e.pop());r.forEach((t=>{r.delete(t),e.push(t)}))}}([1,7,4,23,8,9,4,3,5,7,9,67,6345,324])})();
+(()=>{"use strict";new class{constructor(e){this.#e(e),this.root=this.#r(e,0,e.length-1)}#r(e,r,t){}#e(e){this.#t(e),e.sort(((e,r)=>e-r))}#t(e){const r=new Set;for(;e.length>0;)r.add(e.pop());r.forEach((t=>{r.delete(t),e.push(t)}))}}([1,7,4,23,8,9,4,3,5,7,9,67,6345,324])})();
