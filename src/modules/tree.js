@@ -155,4 +155,53 @@ export default class Tree {
       return inorderTraversal;
     }
   }
+
+  postorder(callback) {
+    // See Apr 02, 2016 00:57 comment by ofLucas at
+    // https://leetcode.com/problems/binary-tree-postorder-traversal/solutions/45551/preorder-inorder-and-postorder-iteratively-summarization/?orderBy=most_votes
+    // for this solution. I chose it instead of the original poster's solution 
+    // because the original poster's solution requires the traversal be made 
+    // before the callbacks can be done in the right order, because the traversal 
+    // fills the traversal array in reverse, I believe.
+    const stack = [];
+    const postorderTraversal = [];
+    let curr = this.root;
+    while (curr != null || stack.length > 0) {
+      while (!Tree.#isLeaf(curr)) {
+        stack.push(curr);
+        curr = curr.left;
+      }
+      if (curr !== null) {
+        Tree.#_processNode(curr, callback, postorderTraversal);
+      }
+      while (stack.length > 0 && curr === stack[stack.length - 1].right) {
+        curr = stack.pop();
+        Tree.#_processNode(curr, callback, postorderTraversal);
+      }
+      if (stack.length === 0) {
+        curr = null;
+      } else {
+        curr = stack[stack.length - 1].right;
+      }
+    }
+    if (!callback) {
+      return postorderTraversal;
+    }
+  }
+
+  static #isLeaf(node) {
+    if (node === null) {
+      return true;
+    } else {
+      return node.left === null && node.right === null;
+    }
+  }
+
+  static #_processNode(node, callback, traversal) {
+    if (callback) {
+      callback(node.value);
+    } else {
+      traversal.push(node.value);
+    }
+  }
 }
