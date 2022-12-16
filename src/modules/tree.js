@@ -46,11 +46,18 @@ export default class Tree {
     }
   }
   
-  find(value, node = this.root) {
-    if (node === null || node.value === value) {
-      return node;
+  find(value) {
+    // Don't need to do recursive solution which checks every node in tree 
+    // because of the nature of a correctly-formed BST
+    let node = this.root;
+    while (node !== null && node.value !== value) {
+      if (node.value > value) {
+        node = node.left;
+      } else {
+        node = node.right;
+      }
     }
-    return this.find(value, node.left) || this.find(value, node.right);
+    return node;
   }
 
   insert(value) {

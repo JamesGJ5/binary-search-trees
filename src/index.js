@@ -6,6 +6,6 @@ tree1.prettyPrint();
 // console.log(tree1.find(4));
 // console.log(tree1.find(21));
 
-tree1.insert(1000);
-tree1.insert(-10);
-tree1.prettyPrint();
+// tree1.insert(1000);
+// tree1.insert(-10);
+// tree1.prettyPrint();
