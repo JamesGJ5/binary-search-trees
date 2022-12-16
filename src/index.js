@@ -28,8 +28,10 @@ for (let i = 0; i < tree1Values.length; i += 1) {
 //   console.log(typeof value);
   const node = tree1.find(value);
 //   console.log(node);
-  const height = Tree.height(node);
-  console.log(height);
+//   const height = Tree.height(node);
+//   console.log(height);
+  const depth = tree1.depth(node);
+  console.log(depth);
 }
 
 // const tree2 = new Tree([1]);

@@ -217,4 +217,20 @@ export default class Tree {
     }
     return (maximum_height >= 0) ? maximum_height : null;
   }
+
+  depth(node) {
+    let res = 0;
+    let curr = this.root;
+    while (curr !== null && curr !== node) {
+      if (curr.value > node.value) {
+        curr = curr.left;
+      } else if (curr.value === node.value) {
+        curr = null;
+      } else {
+        curr = curr.right;
+      }
+      res += 1;
+    }
+    return (node !== null && curr === node) ? res : null;
+  }
 }
