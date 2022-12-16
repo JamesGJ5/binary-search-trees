@@ -37,13 +37,21 @@ export default class Tree {
     });
   }
 
-  prettyPrint(curr = this.root, prefix = '', isLeft = true) {
+  prettyPrint() {
+    if (this.root !== null) {
+      this.#_prettyPrint();
+    } else {
+      console.log('This tree is empty');
+    }
+  }
+
+  #_prettyPrint(curr = this.root, prefix = '', isLeft = true) {
     if (curr.right !== null) {
-      this.prettyPrint(curr.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+      this.#_prettyPrint(curr.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
     }
     console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${curr.value}`);
     if (curr.left !== null) {
-      this.prettyPrint(curr.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+      this.#_prettyPrint(curr.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
   }
 

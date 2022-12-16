@@ -16,16 +16,16 @@ import Tree from './modules/tree';
 // console.log(tree1.preorder());
 
 const tree1 = new Tree([1, 2, 3, 4, 5]);
-// tree1.prettyPrint();
+tree1.prettyPrint();
 // tree1.inorder(console.log);
-console.log(tree1.inorder());
+// console.log(tree1.inorder());
 
 const tree2 = new Tree([1]);
-// tree2.prettyPrint();
+tree2.prettyPrint();
 // tree2.inorder(console.log);
-console.log(tree2.inorder());
+// console.log(tree2.inorder());
 
 const tree3 = new Tree([]);
-// tree3.prettyPrint();
+tree3.prettyPrint();
 // tree3.inorder(console.log);
-console.log(tree3.inorder());
+// console.log(tree3.inorder());
