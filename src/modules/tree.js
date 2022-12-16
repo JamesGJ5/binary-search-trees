@@ -125,8 +125,20 @@ export default class Tree {
         stack.push(curr.left);
       }
     }
+    return Tree.#_getTraversalIfNoCallback(callback, preorderTraversal);
+  }
+
+  static #_processNode(node, callback, traversal) {
+    if (callback) {
+      callback(node.value);
+    } else {
+      traversal.push(node.value);
+    }
+  }
+
+  static #_getTraversalIfNoCallback(callback, traversal) {
     if (!callback) {
-      return preorderTraversal;
+      return traversal;
     }
   }
 
@@ -143,9 +155,7 @@ export default class Tree {
       Tree.#_processNode(curr, callback, inorderTraversal);
       curr = curr.right;
     }
-    if (!callback) {
-      return inorderTraversal;
-    }
+    return Tree.#_getTraversalIfNoCallback(callback, inorderTraversal);
   }
 
   postorder(callback) {
@@ -176,9 +186,7 @@ export default class Tree {
         curr = stack[stack.length - 1].right;
       }
     }
-    if (!callback) {
-      return postorderTraversal;
-    }
+    return Tree.#_getTraversalIfNoCallback(callback, postorderTraversal);
   }
 
   static #isLeaf(node) {
@@ -186,14 +194,6 @@ export default class Tree {
       return true;
     } else {
       return node.left === null && node.right === null;
-    }
-  }
-
-  static #_processNode(node, callback, traversal) {
-    if (callback) {
-      callback(node.value);
-    } else {
-      traversal.push(node.value);
     }
   }
 }
