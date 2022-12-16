@@ -52,4 +52,25 @@ export default class Tree {
     }
     return this.find(value, node.left) || this.find(value, node.right);
   }
+
+  insert(value) {
+    if (this.root === null) {
+      this.root = new Node(value);
+      return;
+    }
+    let node = this.root;
+    while (node.value !== value) {
+      if (node.value > value) {
+        if (node.left === null) {
+          node.left = new Node(value);
+        }
+        node = node.left;
+      } else {
+        if (node.right === null) {
+          node.right = new Node(value);
+        }
+        node = node.right;
+      }
+    }
+  }
 }
