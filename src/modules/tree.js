@@ -196,4 +196,23 @@ export default class Tree {
       return node.left === null && node.right === null;
     }
   }
+
+  height(node) {
+    // Note: this only works if the node is actually in the tree
+    let maximum_height = -1;
+    const queue = (node !== null) ? new Deque([node]) : new Deque([]);
+    while (queue.length > 0) {
+      maximum_height += 1;
+      for (let i = 0; i < queue.length; i += 1) {
+        const curr = queue.shift();
+        if (curr.left) {
+          queue.push(curr.left);
+        }
+        if (curr.right) {
+          queue.push(curr.right);
+        }
+      }
+    }
+    return (maximum_height >= 0) ? maximum_height : null;
+  }
 }

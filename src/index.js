@@ -15,23 +15,33 @@ import Tree from './modules/tree';
 // tree1.preorder(console.log);
 // console.log(tree1.preorder());
 
-const tree1 = new Tree([1, 2, 3, 4, 5]);
+const tree1Values = [1, 2, 3, 4, 5];
+const tree1 = new Tree(tree1Values);
 tree1.prettyPrint();
 // tree1.preorder(console.log);
 // tree1.inorder(console.log);
 // console.log(tree1.inorder());
-console.log(tree1.postorder());
+// console.log(tree1.postorder());
+for (let i = 0; i < tree1Values.length; i += 1) {
+  const value = tree1Values[i];
+  console.log(value);
+//   console.log(typeof value);
+  const node = tree1.find(value);
+//   console.log(node);
+  const height = tree1.height(node);
+  console.log(height);
+}
 
-const tree2 = new Tree([1]);
-tree2.prettyPrint();
+// const tree2 = new Tree([1]);
+// tree2.prettyPrint();
 // tree2.preorder(console.log);
 // tree2.inorder(console.log);
 // console.log(tree2.inorder());
-console.log(tree2.postorder());
+// console.log(tree2.postorder());
 
-const tree3 = new Tree([]);
-tree3.prettyPrint();
+// const tree3 = new Tree([]);
+// tree3.prettyPrint();
 // tree3.preorder(console.log);
 // tree3.inorder(console.log);
 // console.log(tree3.inorder());
-console.log(tree3.postorder());
+// console.log(tree3.postorder());
