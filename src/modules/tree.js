@@ -1,4 +1,5 @@
 import Node from './node_class';
+import Deque from '../../node_modules/collections/deque';
 
 export default class Tree {
   constructor(arr) {
@@ -78,6 +79,28 @@ export default class Tree {
         }
         node = node.right;
       }
+    }
+  }
+
+  levelOrder(callback) {
+    const queue = (this.root !== null) ? new Deque([this.root]) : new Deque([]);
+    const breadthFirstTraversal = [];
+    while (queue.length > 0) {
+      const node = queue.shift();
+      if (callback) {
+        callback(node.value);
+      } else {
+        breadthFirstTraversal.push(node.value);
+      }
+      if (node.left !== null) {
+        queue.push(node.left);
+      }
+      if (node.right !== null) {
+        queue.push(node.right);
+      }
+    }
+    if (!callback) {
+      return breadthFirstTraversal;
     }
   }
 }
