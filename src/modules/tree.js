@@ -37,28 +37,28 @@ export default class Tree {
     });
   }
 
-  prettyPrint(node = this.root, prefix = '', isLeft = true) {
-    if (node.right !== null) {
-      this.prettyPrint(node.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+  prettyPrint(curr = this.root, prefix = '', isLeft = true) {
+    if (curr.right !== null) {
+      this.prettyPrint(curr.right, `${prefix}${isLeft ? '│   ' : '    '}`, false);
     }
-    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.value}`);
-    if (node.left !== null) {
-      this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${curr.value}`);
+    if (curr.left !== null) {
+      this.prettyPrint(curr.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
   }
 
   find(value) {
-    // Don't need to do recursive solution which checks every node in tree 
+    // Don't need to do recursive solution which checks every curr in tree 
     // because of the nature of a correctly-formed BST
-    let node = this.root;
-    while (node !== null && node.value !== value) {
-      if (node.value > value) {
-        node = node.left;
+    let curr = this.root;
+    while (curr !== null && curr.value !== value) {
+      if (curr.value > value) {
+        curr = curr.left;
       } else {
-        node = node.right;
+        curr = curr.right;
       }
     }
-    return node;
+    return curr;
   }
 
   insert(value) {
@@ -66,18 +66,18 @@ export default class Tree {
       this.root = new Node(value);
       return;
     }
-    let node = this.root;
-    while (node.value !== value) {
-      if (node.value > value) {
-        if (node.left === null) {
-          node.left = new Node(value);
+    let curr = this.root;
+    while (curr.value !== value) {
+      if (curr.value > value) {
+        if (curr.left === null) {
+          curr.left = new Node(value);
         }
-        node = node.left;
+        curr = curr.left;
       } else {
-        if (node.right === null) {
-          node.right = new Node(value);
+        if (curr.right === null) {
+          curr.right = new Node(value);
         }
-        node = node.right;
+        curr = curr.right;
       }
     }
   }
@@ -86,17 +86,17 @@ export default class Tree {
     const queue = (this.root !== null) ? new Deque([this.root]) : new Deque([]);
     const breadthFirstTraversal = [];
     while (queue.length > 0) {
-      const node = queue.shift();
+      const curr = queue.shift();
       if (callback) {
-        callback(node.value);
+        callback(curr.value);
       } else {
-        breadthFirstTraversal.push(node.value);
+        breadthFirstTraversal.push(curr.value);
       }
-      if (node.left !== null) {
-        queue.push(node.left);
+      if (curr.left !== null) {
+        queue.push(curr.left);
       }
-      if (node.right !== null) {
-        queue.push(node.right);
+      if (curr.right !== null) {
+        queue.push(curr.right);
       }
     }
     if (!callback) {
@@ -108,17 +108,17 @@ export default class Tree {
     const stack = (this.root !== null) ? [this.root] : [];
     const preorderTraversal = [];
     while (stack.length > 0) {
-      const node = stack.pop();
+      const curr = stack.pop();
       if (callback) {
-        callback(node.value);
+        callback(curr.value);
       } else {
-        preorderTraversal.push(node.value);
+        preorderTraversal.push(curr.value);
       }
-      if (node.right !== null) {
-        stack.push(node.right);
+      if (curr.right !== null) {
+        stack.push(curr.right);
       }
-      if (node.left !== null) {
-        stack.push(node.left);
+      if (curr.left !== null) {
+        stack.push(curr.left);
       }
     }
     if (!callback) {
