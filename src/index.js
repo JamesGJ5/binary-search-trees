@@ -10,4 +10,7 @@ tree1.prettyPrint();
 // tree1.insert(-10);
 // tree1.prettyPrint();
 
-console.log(tree1.levelOrder());
+// console.log(tree1.levelOrder());
+
+tree1.preorder(console.log);
+console.log(tree1.preorder());

@@ -103,4 +103,26 @@ export default class Tree {
       return breadthFirstTraversal;
     }
   }
+
+  preorder(callback) {
+    const stack = (this.root !== null) ? [this.root] : [];
+    const preorderTraversal = [];
+    while (stack.length > 0) {
+      const node = stack.pop();
+      if (callback) {
+        callback(node.value);
+      } else {
+        preorderTraversal.push(node.value);
+      }
+      if (node.right !== null) {
+        stack.push(node.right);
+      }
+      if (node.left !== null) {
+        stack.push(node.left);
+      }
+    }
+    if (!callback) {
+      return preorderTraversal;
+    }
+  }
 }
