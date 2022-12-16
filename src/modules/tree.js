@@ -125,4 +125,26 @@ export default class Tree {
       return preorderTraversal;
     }
   }
+
+  inorder(callback) {
+    const stack = [];
+    const inorderTraversal = [];
+    let curr = this.root;
+    while (curr !== null || stack.length > 0) {
+      while (curr !== null) {
+        stack.push(curr);
+        curr = curr.left;
+      }
+      curr = stack.pop();
+      if (callback) {
+        callback(curr.value);
+      } else {
+        inorderTraversal.push(curr.value);
+      }
+      curr = curr.right;
+    }
+    if (!callback) {
+      return inorderTraversal;
+    }
+  }
 }
