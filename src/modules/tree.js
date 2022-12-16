@@ -117,11 +117,7 @@ export default class Tree {
     const preorderTraversal = [];
     while (stack.length > 0) {
       const curr = stack.pop();
-      if (callback) {
-        callback(curr.value);
-      } else {
-        preorderTraversal.push(curr.value);
-      }
+      Tree.#_processNode(curr, callback, preorderTraversal);
       if (curr.right !== null) {
         stack.push(curr.right);
       }
@@ -144,11 +140,7 @@ export default class Tree {
         curr = curr.left;
       }
       curr = stack.pop();
-      if (callback) {
-        callback(curr.value);
-      } else {
-        inorderTraversal.push(curr.value);
-      }
+      Tree.#_processNode(curr, callback, inorderTraversal);
       curr = curr.right;
     }
     if (!callback) {

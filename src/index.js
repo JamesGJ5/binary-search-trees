@@ -17,18 +17,21 @@ import Tree from './modules/tree';
 
 const tree1 = new Tree([1, 2, 3, 4, 5]);
 tree1.prettyPrint();
+tree1.preorder(console.log);
 // tree1.inorder(console.log);
 // console.log(tree1.inorder());
-console.log(tree1.postorder());
+// console.log(tree1.postorder());
 
 const tree2 = new Tree([1]);
 tree2.prettyPrint();
+tree2.preorder(console.log);
 // tree2.inorder(console.log);
 // console.log(tree2.inorder());
-console.log(tree2.postorder());
+// console.log(tree2.postorder());
 
 const tree3 = new Tree([]);
 tree3.prettyPrint();
+tree3.preorder(console.log);
 // tree3.inorder(console.log);
 // console.log(tree3.inorder());
-console.log(tree3.postorder());
+// console.log(tree3.postorder());
