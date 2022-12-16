@@ -2,29 +2,29 @@ import Node from './node_class';
 
 export default class Tree {
   constructor(arr) {
-    this.#prepareArray(arr);
+    Tree.#prepareArray(arr);
     this.root = this.#buildTree(arr, 0, arr.length - 1);
   }
 
   #buildTree(arr, start, end) {
     // arr must be sorted
     if (start > end) {
-        return null;
+      return null;
     }
-    const mid = parseInt((start + end) / 2);
+    const mid = parseInt((start + end) / 2, 10);
     const root = new Node(arr[mid]);
     root.left = this.#buildTree(arr, start, mid - 1);
     root.right = this.#buildTree(arr, mid + 1, end);
     return root;
   }
 
-  #prepareArray(arr) {
-    this.#removeDuplicates(arr);
+  static #prepareArray(arr) {
+    Tree.#removeDuplicates(arr);
     // arr must contain values that permit the below
     arr.sort((a, b) => a - b);
   }
 
-  #removeDuplicates(arr) {
+  static #removeDuplicates(arr) {
     // TODO: consider splitting the below into two methods
     const dataUnrepeated = new Set();
     while (arr.length > 0) {
@@ -45,7 +45,7 @@ export default class Tree {
       this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
   }
-  
+
   find(value) {
     // Don't need to do recursive solution which checks every node in tree 
     // because of the nature of a correctly-formed BST
