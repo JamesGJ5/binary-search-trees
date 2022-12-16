@@ -1,6 +1,8 @@
 import Node from './node_class';
 import Deque from '../../node_modules/collections/deque';
 
+// TODO: replace checks for null with checks for falsey where applicable, in case 
+// undefined might be passed for example
 export default class Tree {
   constructor(arr) {
     Tree.#prepareArray(arr);
