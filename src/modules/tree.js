@@ -197,8 +197,8 @@ export default class Tree {
     }
   }
 
-  height(node) {
-    // Note: this only works if the node is actually in the tree
+  static height(node) {
+    // Finds the height of a node whatever tree it is in
     let maximum_height = -1;
     const queue = (node !== null) ? new Deque([node]) : new Deque([]);
     while (queue.length > 0) {

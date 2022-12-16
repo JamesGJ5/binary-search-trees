@@ -28,7 +28,7 @@ for (let i = 0; i < tree1Values.length; i += 1) {
 //   console.log(typeof value);
   const node = tree1.find(value);
 //   console.log(node);
-  const height = tree1.height(node);
+  const height = Tree.height(node);
   console.log(height);
 }
 
