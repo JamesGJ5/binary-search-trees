@@ -10,7 +10,7 @@ export default class Tree {
   }
 
   #buildTree(arr, start, end) {
-    // arr must be sorted
+    // arr should be sorted and have duplicates removed (use Tree.#prepareArray)
     if (start > end) {
       return null;
     }
@@ -97,6 +97,7 @@ export default class Tree {
     const breadthFirstTraversal = [];
     while (queue.length > 0) {
       const curr = queue.shift();
+      // TODO: replace the below with Tree.#_processNode if applicable
       if (callback) {
         callback(curr);
       } else {
@@ -109,6 +110,8 @@ export default class Tree {
         queue.push(curr.right);
       }
     }
+    // TODO: replace the below by returning Tree.#_getTraversalIfNoCallback if 
+    // applicable
     if (!callback) {
       return breadthFirstTraversal;
     }
@@ -232,6 +235,16 @@ export default class Tree {
       res += 1;
     }
     return (node !== null && curr === node) ? res : null;
+  }
+
+  rebalance() {
+    // Rebalances only if unbalanced
+    if (this.isBalanced()) {
+      return;
+    }
+    const traversal = this.preorder();
+    Tree.#prepareArray(traversal);
+    this.root = this.#buildTree(traversal, 0, traversal.length - 1);
   }
 
   isBalanced() {
