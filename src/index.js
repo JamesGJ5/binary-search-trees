@@ -12,14 +12,14 @@ import Tree from './modules/tree';
 
 // console.log(tree1.levelOrder());
 
-// tree1.preorder(console.log);
+// tree1.preorder();
 // console.log(tree1.preorder());
 
 const tree1Values = [1, 2, 3, 4, 5];
 const tree1 = new Tree(tree1Values);
 tree1.prettyPrint();
-// tree1.preorder(console.log);
-// tree1.inorder(console.log);
+// tree1.preorder();
+// tree1.inorder();
 // console.log(tree1.inorder());
 // console.log(tree1.postorder());
 for (let i = 0; i < tree1Values.length; i += 1) {
@@ -36,14 +36,14 @@ for (let i = 0; i < tree1Values.length; i += 1) {
 
 // const tree2 = new Tree([1]);
 // tree2.prettyPrint();
-// tree2.preorder(console.log);
-// tree2.inorder(console.log);
+// tree2.preorder();
+// tree2.inorder();
 // console.log(tree2.inorder());
 // console.log(tree2.postorder());
 
 // const tree3 = new Tree([]);
 // tree3.prettyPrint();
-// tree3.preorder(console.log);
-// tree3.inorder(console.log);
+// tree3.preorder();
+// tree3.inorder();
 // console.log(tree3.inorder());
 // console.log(tree3.postorder());

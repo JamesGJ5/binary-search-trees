@@ -98,7 +98,7 @@ export default class Tree {
     while (queue.length > 0) {
       const curr = queue.shift();
       if (callback) {
-        callback(curr.value);
+        callback(curr);
       } else {
         breadthFirstTraversal.push(curr.value);
       }
@@ -132,7 +132,7 @@ export default class Tree {
 
   static #_processNode(node, callback, traversal) {
     if (callback) {
-      callback(node.value);
+      callback(node);
     } else {
       traversal.push(node.value);
     }
