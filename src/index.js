@@ -22,17 +22,30 @@ tree1.prettyPrint();
 // tree1.inorder();
 // console.log(tree1.inorder());
 // console.log(tree1.postorder());
-for (let i = 0; i < tree1Values.length; i += 1) {
-  const value = tree1Values[i];
-  console.log(value);
+// for (let i = 0; i < tree1Values.length; i += 1) {
+  // const value = tree1Values[i];
+  // console.log(value);
 //   console.log(typeof value);
-  const node = tree1.find(value);
+  // const node = tree1.find(value);
 //   console.log(node);
 //   const height = Tree.height(node);
 //   console.log(height);
-  const depth = tree1.depth(node);
-  console.log(depth);
-}
+  // const depth = tree1.depth(node);
+  // console.log(depth);
+// }
+console.log(tree1.isBalanced());
+tree1.insert(1000);
+tree1.prettyPrint();
+console.log(tree1.isBalanced());
+tree1.insert(4.5);
+tree1.prettyPrint();
+console.log(tree1.isBalanced());
+tree1.insert(3.5);
+tree1.prettyPrint();
+console.log(tree1.isBalanced());
+tree1.insert(10000);
+tree1.prettyPrint();
+console.log(tree1.isBalanced());
 
 // const tree2 = new Tree([1]);
 // tree2.prettyPrint();

@@ -233,4 +233,34 @@ export default class Tree {
     }
     return (node !== null && curr === node) ? res : null;
   }
+
+  isBalanced() {
+    try {
+      this.postorder(Tree.#_checkIfSubtreesBalanced);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  // TODO: consider making it so that Tree.height returns -1 if the node passed 
+  // to it is null, because then #_getSubtreeHeight will be able to be used 
+  // more generally (because it'll have handling for when node === null) and 
+  // we won't have to do the below null-check
+  static #_checkIfSubtreesBalanced(node) {
+    if (node === null) {
+      return;
+    }
+    const leftSubtreeHeight = Tree.#_getSubtreeHeight(node, true);
+    const rightSubtreeHeight = Tree.#_getSubtreeHeight(node, false);
+    if (Math.abs(leftSubtreeHeight - rightSubtreeHeight) > 1) {
+      throw false;
+    }
+  }
+
+  static #_getSubtreeHeight(node, leftSubtree = true) {
+    const subtree = (leftSubtree) ? 'left' : 'right';
+    const subtreeHeight = (node[subtree] !== null) ? Tree.height(node[subtree]) + 1: 0;
+    return subtreeHeight;
+  }
 }
