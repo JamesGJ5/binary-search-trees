@@ -6,18 +6,22 @@ import Deque from '../../node_modules/collections/deque';
 export default class Tree {
   constructor(arr) {
     Tree.#prepareArray(arr);
-    this.root = this.#buildTree(arr, 0, arr.length - 1);
+    this.#buildTree(arr);
   }
 
-  #buildTree(arr, start, end) {
+  #buildTree(arr) {
     // arr should be sorted and have duplicates removed (use Tree.#prepareArray)
+    this.root = this.#buildTreeRecursively(arr, 0, arr.length - 1);
+  }
+
+  #buildTreeRecursively(arr, start, end) {
     if (start > end) {
       return null;
     }
     const mid = parseInt((start + end) / 2, 10);
     const root = new Node(arr[mid]);
-    root.left = this.#buildTree(arr, start, mid - 1);
-    root.right = this.#buildTree(arr, mid + 1, end);
+    root.left = this.#buildTreeRecursively(arr, start, mid - 1);
+    root.right = this.#buildTreeRecursively(arr, mid + 1, end);
     return root;
   }
 
@@ -244,7 +248,7 @@ export default class Tree {
     }
     const traversal = this.preorder();
     Tree.#prepareArray(traversal);
-    this.root = this.#buildTree(traversal, 0, traversal.length - 1);
+    this.#buildTree(traversal);
   }
 
   isBalanced() {
